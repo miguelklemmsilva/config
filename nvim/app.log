@@ -1,0 +1,7 @@
+13:07:37 [INFO] Logger started
+13:07:37 [INFO] Received message with method: initialize
+13:07:37 [INFO] Encoded message: Content-Length: 136
+
+{"jsonrpc":"2.0","id":1,"error":null,"result":{"capabilities":{"textDocumentSync":1},"serverInfo":{"name":"toy-lsp","version":"0.1.0"}}}
+13:07:37 [WARN] Message type not recognized! Type: initialized
+20:58:22 [WARN] Error decoding message: data did not match any variant of untagged enum Incoming
