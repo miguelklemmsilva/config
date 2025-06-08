@@ -34,7 +34,7 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
-    use { "folke/trouble.nvim", cmd = { "Trouble" } }
+    use { "folke/trouble.nvim", cmd = "Trouble" }
     use { "Pocco81/auto-save.nvim" }
     use { "sindrets/diffview.nvim" }
 end)

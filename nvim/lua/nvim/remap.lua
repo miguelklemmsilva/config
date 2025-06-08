@@ -11,7 +11,7 @@ map(v, "K", ":m '<-2<CR>gv=gv")
 map(n, "n", "nzzzv")
 map(n, "N", "Nzzzv")
 
-map(x, "<leader>p", [["_dP]])
+map(x, "<leader>p", [["+p]])
 map({ n, v }, "<leader>y", [["+y]])
 map(n, "<leader>Y", [["+Y]])
 
