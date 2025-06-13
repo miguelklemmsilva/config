@@ -90,11 +90,6 @@ _G.packer_plugins = {
     path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
     url = "https://github.com/Pocco81/auto-save.nvim"
   },
-  ["autoclose.nvim"] = {
-    loaded = true,
-    path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
-    url = "https://github.com/m4xshen/autoclose.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -140,6 +135,14 @@ _G.packer_plugins = {
     path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\nÚ\2\0\0\6\0\t\0\0166\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\3\0004\4\0\0=\4\4\3B\1\2\0019\1\2\0005\3\b\0005\4\5\0005\5\6\0=\5\a\4=\4\4\3B\1\2\1K\0\1\0\1\0\1\14fast_wrap\0\nchars\1\6\0\0\6{\6[\6(\6\"\6'\1\0\v\20manual_position\2\15before_key\6h\fend_key\6$\bmap\n<C-w>\19highlight_grey\fComment\nchars\0\14highlight\vSearch\fpattern\21[%'%\"%>%]%)%}%,]\tkeys\31qwertyuiopzxcvbnmasdfghjkl\22cursor_pos_before\2\14after_key\6l\14fast_wrap\1\0\1\14fast_wrap\0\nsetup\19nvim-autopairs\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/miguelklemmsilva/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -178,7 +181,7 @@ _G.packer_plugins = {
   },
   ["trouble.nvim"] = {
     commands = { "Trouble" },
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -213,6 +216,13 @@ pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
       end})
 time([[Defining lazy-load commands]], false)
 
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

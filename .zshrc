@@ -37,12 +37,6 @@ bindkey '^[[B' down-line-or-beginning-search
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
-
 eval "$(starship init zsh)"
 
 HISTSIZE=5000

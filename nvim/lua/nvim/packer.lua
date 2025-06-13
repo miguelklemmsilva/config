@@ -27,14 +27,45 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-path" }
     use { "hrsh7th/cmp-cmdline" }
     use { "f-person/git-blame.nvim" }
-    use { "m4xshen/autoclose.nvim" }
     use { "L3MON4D3/LuaSnip" }
     use { "numToStr/Comment.nvim",
         config = function()
             require('Comment').setup()
         end
     }
-    use { "folke/trouble.nvim", cmd = "Trouble" }
+    use { "folke/trouble.nvim",
+        cmd = "Trouble",
+        config = function()
+            require('Comment').setup()
+        end
+    }
     use { "Pocco81/auto-save.nvim" }
     use { "sindrets/diffview.nvim" }
+    use { "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            local npairs = require("nvim-autopairs")
+            -- put this to setup function and press <a-e> to use fast_wrap
+            npairs.setup({
+                fast_wrap = {},
+            })
+
+            -- change default fast_wrap
+            npairs.setup({
+                fast_wrap = {
+                    map = "<C-w>",
+                    chars = { '{', '[', '(', '"', "'" },
+                    pattern = [=[[%'%"%>%]%)%}%,]]=],
+                    end_key = '$',
+                    before_key = 'h',
+                    after_key = 'l',
+                    cursor_pos_before = true,
+                    keys = 'qwertyuiopzxcvbnmasdfghjkl',
+                    manual_position = true,
+                    highlight = 'Search',
+                    highlight_grey = 'Comment'
+                },
+            })
+        end
+    }
 end)
